@@ -3,9 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random as rand
 
+#### Works for NetworkX and custom input ####
+
 # G - (1,2): (3, 4, 5) - source, target: edgew, sourcew, targetw
 # weight of vertex?
-def random_graph_gen(n, G): # random number of nodes and edges
+def random_graph_gen(n, G): # simple graph generator - random number of nodes and edges
 
     # n == rand number of nodes (by hundreds for now)
 
@@ -54,7 +56,7 @@ def random_graph_gen(n, G): # random number of nodes and edges
 
     return graph
 
-def maximal_matching(G): # networkx greedy function
+def maximal_matching(G): # NetworkX Greedy MM Function
     r"""Find a maximal matching in the graph.
 
     A matching is a subset of edges in which no node occurs more than once.
@@ -126,7 +128,7 @@ def construct_adjl(SubGraph):
 
     return SadjL
 
-def reconstruct(SubGraph, x, y, v, previous_child, vertex_weight):
+def reconstruct(SubGraph, x, y, v, previous_child, vertex_weight): #### Re-Assgin Parent/Child Nodes ####
     num=0
     if x != -1 and y != -1:
         num=1
@@ -265,11 +267,13 @@ def hendrickson_leland(G, adjL, n, goal_n, rounds):
 
 
 def main():
+    #### Simple Graph ####
     G = nx.Graph()
     n = 100
     G = random_graph_gen(n, G)
     al = construct_adjl(G)
 
+    #### Very Simple Graph Test ####
     #G = {(0,1): (3,6,3),(0,3): (16,6,12),(0,4): (19,6,9),(1,0): (3,3,6),(1,2): (12,3,10),(2,1): (12,10,3),(2,4): (7,10,9),(2,5): (3,10,4),(3,0): (16,12,6),(3,4): (11,12,9),(4,0): (19,9,6),(4,2): (7,9,10),(4,3): (11,9,12),(4,5): (14,9,4),(5,2): (3,4,10),(5,4): (14,4,9)}
     #al = {0:{1,3,4}, 1: {0,2}, 2: {1,4,5}, 3: {0,4}, 4:{0,2,3,5}, 5: {2,4}}
 

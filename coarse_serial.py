@@ -14,6 +14,7 @@ NODES = 16
 
 const = int('0x2545F4914F6CDD1D', 16) # ignore #
 
+######### FIND MIS ###########
 
 def kokkos_mis(G): # 3. Build MIS of supernodes based off Kokkos paper #
     print('3')
@@ -164,7 +165,7 @@ def randPriori(numVerts):
 
     return nvBits
 
-####################################################################
+###### ASSIGN SUPERNODES #######
 
 def firstPass(G, M1): # 4. Root + Neighbors = Supernode
     print('4')
@@ -223,7 +224,7 @@ def thirdPass(G, vertex_set, lm1): # 6. Still Unassigned? New Supernode & Reassi
             #print('3rd pass: ', supernode, labels)
     return
 
-################################
+###### COARSEN + DEPENDENCIES ###
 
 def build_dependencies(G, labels): # 7.  Construct the subgraph and supernode dependencies
     print('7')
@@ -383,12 +384,16 @@ def main():
 
     N = 67
 
+    #### Simple Graphs ####
     #G = convert.read_csv_file(N, 'csv/simple_graph_000.csv',True) # N=5
     #G = convert.read_csv_file(N, 'csv/kk_simpleEx.csv',True)      # N=6
     #G = convert.read_csv_file(N, 'csv/simple_graph_001.csv',True) # N=7
+
+    #### SuiteSparse Graphs ####
     G = convert.read_csv_file(N, 'csv/west0067.csv', False) # N=67
     #G = convert.read_csv_file(N, 'csv/netz4504.csv', False)  # N=1961
 
+    #### NetworkX Graphs ####
     #NX = nx.fast_gnp_random_graph(N, 0.1)
     #G = convert.nxtoG(NX)
 
