@@ -7,3 +7,6 @@ Maximal Independent Set and Graph Coarsening" -- Brian Kelleyand Sivasankaran Ra
 - suitesparse = suitesparse graphs downloaded
 - coarse_serial.py = serial version of coarsening algorithm proposed in paper
     - given an input graph and a "goal graph size", it will output a coarsened graph that is of size <= to the given goal size
+
+
+** Needs verification mechanisms **
